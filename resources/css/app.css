@@ -1,3 +1,117 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 自定义温馨背景样式 */
+@layer components {
+    /* 浮动动画 */
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-20px);
+        }
+    }
+    
+    @keyframes gentle-pulse {
+        0%, 100% {
+            opacity: 0.4;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.8;
+            transform: scale(1.05);
+        }
+    }
+    
+    @keyframes soft-glow {
+        0%, 100% {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+        50% {
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+        }
+    }
+    
+    /* 温馨卡片样式 */
+    .warm-card {
+        @apply bg-white/90 backdrop-blur-sm border border-white/30 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+    }
+    
+    .warm-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 渐变文字 */
+    .gradient-text {
+        @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
+    }
+    
+    /* 温馨按钮 */
+    .warm-button {
+        @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105;
+    }
+    
+    /* 学术图标容器 */
+    .academic-icon {
+        @apply w-12 h-12 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full flex items-center justify-center text-white shadow-lg;
+        animation: gentle-pulse 3s ease-in-out infinite;
+    }
+    
+    /* 浮动装饰元素 */
+    .floating-decoration {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    /* 背景粒子效果 */
+    .particle {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.6;
+        animation: float 8s ease-in-out infinite;
+    }
+    
+    /* 温馨导航 */
+    .warm-nav {
+        @apply bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm;
+    }
+    
+    /* 功能卡片网格 */
+    .feature-grid {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+    }
+    
+    /* 统计卡片 */
+    .stat-card {
+        @apply bg-gradient-to-br from-white/80 to-gray-50/80 backdrop-blur-sm border border-white/30 rounded-xl p-6 text-center shadow-lg;
+    }
+    
+    /* 欢迎区域 */
+    .welcome-section {
+        @apply bg-gradient-to-r from-blue-50/80 to-purple-50/80 backdrop-blur-sm border border-white/30 rounded-xl p-8 mb-8 shadow-lg;
+    }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .warm-card {
+        background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(17, 24, 39, 0.9) 100%);
+        @apply border-gray-700/30;
+    }
+    
+    .warm-nav {
+        @apply bg-gray-800/80 border-gray-700/20;
+    }
+    
+    .stat-card {
+        @apply bg-gradient-to-br from-gray-800/80 to-gray-900/80 border-gray-700/30;
+    }
+    
+    .welcome-section {
+        @apply bg-gradient-to-r from-gray-800/80 to-gray-900/80 border-gray-700/30;
+    }
+}

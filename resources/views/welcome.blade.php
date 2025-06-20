@@ -19,7 +19,30 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+    <body class="relative bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col overflow-hidden">
+        <!-- 温馨背景装饰元素 -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <!-- 浮动的圆形装饰 -->
+            <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-to-r from-pink-200 to-purple-200 dark:from-pink-800 dark:to-purple-800 rounded-full opacity-20 animate-pulse"></div>
+            <div class="absolute top-1/4 right-20 w-24 h-24 bg-gradient-to-r from-blue-200 to-cyan-200 dark:from-blue-800 dark:to-cyan-800 rounded-full opacity-30 animate-bounce" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-r from-green-200 to-teal-200 dark:from-green-800 dark:to-teal-800 rounded-full opacity-15 animate-pulse" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-1/3 right-10 w-28 h-28 bg-gradient-to-r from-yellow-200 to-orange-200 dark:from-yellow-800 dark:to-orange-800 rounded-full opacity-25 animate-bounce" style="animation-delay: 0.5s;"></div>
+            
+            <!-- 学术元素装饰 -->
+            <div class="absolute top-1/3 left-1/3 opacity-10 dark:opacity-5">
+                <svg class="w-16 h-16 text-indigo-400 animate-spin" style="animation-duration: 20s;" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <div class="absolute bottom-1/4 right-1/3 opacity-10 dark:opacity-5">
+                <svg class="w-20 h-20 text-purple-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
+                </svg>
+            </div>
+            
+            <!-- 渐变光晕效果 -->
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent dark:via-white/2 animate-pulse" style="animation-duration: 4s;"></div>
+        </div>
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
@@ -49,11 +72,13 @@
                 </nav>
             @endif
         </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
+        <div class="relative flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0 z-10">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 font-medium">Let's get started</h1>
-                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">Laravel has an incredibly rich ecosystem. <br>We suggest starting with the following.</p>
+                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white/80 backdrop-blur-sm dark:bg-[#161615]/80 dark:text-[#EDEDEC] shadow-xl border border-white/20 dark:border-gray-700/30 rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none relative overflow-hidden">
+                    <!-- 内部装饰光效 -->
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-60"></div>
+                    <h1 class="mb-1 font-medium text-2xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">📚 论文提交系统</h1>
+                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">欢迎使用学术论文提交与评审系统 ✨<br>让学术交流更加便捷高效</p>
                     <ul class="flex flex-col mb-4 lg:mb-6">
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
                             <span class="relative py-1 bg-white dark:bg-[#161615]">
@@ -61,10 +86,9 @@
                                     <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
                                 </span>
                             </span>
-                            <span>
-                                Read the
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Documentation</span>
+                            <span>📖 查看
+                                <a href="#" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
+                                    <span>系统使用指南</span>
                                     <svg
                                         width="10"
                                         height="11"
@@ -88,10 +112,9 @@
                                     <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
                                 </span>
                             </span>
-                            <span>
-                                Watch video tutorials at
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Laracasts</span>
+                            <span>🎥 观看
+                                <a href="#" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
+                                    <span>操作演示视频</span>
                                     <svg
                                         width="10"
                                         height="11"
@@ -112,13 +135,16 @@
                     </ul>
                     <ul class="flex gap-3 text-sm leading-normal">
                         <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Deploy now
+                            <a href="{{ route('login') }}" class="inline-block dark:bg-gradient-to-r dark:from-blue-600 dark:to-purple-600 dark:border-transparent dark:text-white dark:hover:from-blue-700 dark:hover:to-purple-700 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:border-transparent hover:text-white px-5 py-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg border border-transparent text-white text-sm leading-normal shadow-lg transform hover:scale-105 transition-all duration-200">
+                                🚀 开始使用
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
+                <div class="bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100 dark:from-blue-900/50 dark:via-purple-900/50 dark:to-pink-900/50 relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden backdrop-blur-sm border border-white/30 dark:border-gray-700/30">
+                    <!-- 右侧装饰元素 -->
+                    <div class="absolute top-4 right-4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full opacity-70 animate-pulse"></div>
+                    <div class="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-60 animate-bounce" style="animation-delay: 1.5s;"></div>
                     {{-- Laravel Logo --}}
                     <svg class="w-full text-[#F53003] dark:text-[#F61500] transition-all translate-y-0 opacity-100 max-w-none duration-750 starting:opacity-0 starting:translate-y-6" viewBox="0 0 438 104" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z" fill="currentColor" />
