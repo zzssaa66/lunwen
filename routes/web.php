@@ -43,6 +43,9 @@ use App\Http\Controllers\Reviewer\ReviewController;
 Route::prefix('reviewer')->middleware(['auth','role:reviewer'])->name('reviewer.')->group(function () {
     // 生成 reviewer.papers.index, reviewer.papers.show
     Route::resource('papers', ReviewController::class)->only(['index','show']);
+    // 新的评审页面
+    Route::get('papers/{paper}/review', [ReviewController::class, 'review'])
+         ->name('papers.review');
     // 提交评审意见
     Route::post('papers/{paper}/review', [ReviewController::class, 'store'])
          ->name('papers.review.submit');

@@ -37,7 +37,13 @@
               @if($p->pivot->status==='pending') 待评审 @else 已提交 @endif
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <a href="{{ route('reviewer.papers.show',$p) }}" class="text-blue-500">查看/评审</a>
+              <div class="flex space-x-2">
+                <a href="{{ route('reviewer.papers.show',$p) }}" class="text-gray-600 hover:text-gray-800 text-sm">查看</a>
+                <span class="text-gray-300">|</span>
+                <a href="{{ route('reviewer.papers.review',$p) }}" class="inline-flex items-center px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors duration-200">
+                  <i class="fas fa-clipboard-check mr-1"></i>开始评审
+                </a>
+              </div>
             </td>
           </tr>
           @endforeach

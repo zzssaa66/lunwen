@@ -33,6 +33,16 @@ class ReviewController extends Controller
         return view('reviewer.papers.show', compact('paper','reviewsOfThisVersion'));
     }
 
+    // 新的评审页面
+    public function review(Paper $paper)
+    {
+        abort_unless($paper->reviewers()->where('users.id',Auth::id())->exists(),403);
+        $reviewsOfThisVersion = $paper->reviews()->where('version',$paper->current_version)
+            ->where('reviewer_id', Auth::id())
+            ->first();
+        return view('reviewer.papers.review', compact('paper','reviewsOfThisVersion'));
+    }
+
     // 提交评审意见
     public function store(Request $request, Paper $paper)
     {

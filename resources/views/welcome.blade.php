@@ -135,7 +135,7 @@
                     </ul>
                     <ul class="flex gap-3 text-sm leading-normal">
                         <li>
-                            <a href="{{ route('login') }}" class="inline-block dark:bg-gradient-to-r dark:from-blue-600 dark:to-purple-600 dark:border-transparent dark:text-white dark:hover:from-blue-700 dark:hover:to-purple-700 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:border-transparent hover:text-white px-5 py-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg border border-transparent text-white text-sm leading-normal shadow-lg transform hover:scale-105 transition-all duration-200">
+                            <a href="{{ route('login') }}" class="inline-block dark:bg-blue-600 dark:border-transparent dark:text-white dark:hover:bg-blue-700 hover:bg-blue-700 hover:border-transparent hover:text-white px-5 py-1.5 bg-blue-600 rounded-lg border border-transparent text-white text-sm leading-normal shadow-lg transform hover:scale-105 transition-all duration-200">
                                 🚀 开始使用
                             </a>
                         </li>

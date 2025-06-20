@@ -59,4 +59,16 @@ class User extends Authenticatable
                     ->withPivot(['assigned_at','status','review_submitted_at'])
                     ->withTimestamps();
     }
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            // 仅当新用户没有任何角色时，分配默认 author
+            if (class_exists(\Spatie\Permission\Models\Role::class)) {
+                if ($user->roles()->count() === 0) {
+                    // 确保 roles 表中有 'author'
+                    $user->assignRole('author');
+                }
+            }
+        });
+    }
 }
