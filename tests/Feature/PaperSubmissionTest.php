@@ -22,6 +22,7 @@ class PaperSubmissionTest extends TestCase
 
     public function test_author_can_submit_paper()
     {
+        $this->withoutExceptionHandling();
         Storage::fake('local');
         $author = User::factory()->create();
         $author->assignRole('author');
@@ -51,7 +52,7 @@ class PaperSubmissionTest extends TestCase
         $paper = Paper::create([
             'title'=>'A','abstract'=>'B','file_path'=>'papers/a.pdf','author_id'=>$author->id,'status'=>'submitted','submitted_at'=>now()
         ]);
-        $response = $this->actingAs($reviewer)->get(route('reviewer.papers.show', $paper));
+        $response = $this->actingAs($reviewer)->get(route('reviewer.papers.show', ['paper' => $paper->id]));
         $response->assertStatus(403);
     }
 }
